@@ -1,0 +1,12 @@
+.link {
+    composes: text-sm from global;
+    composes: font-medium from global;
+    composes: text-white from global;
+    composes: hover_text-gray-100 from global;
+}
+
+.separator {
+    composes: h-6 from global;
+    composes: w-px from global;
+    composes: bg-gray-600 from global;
+}

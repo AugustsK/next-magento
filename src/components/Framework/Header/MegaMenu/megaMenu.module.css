@@ -1,0 +1,24 @@
+.root {
+    composes: h-full from global;
+    composes: flex from global;
+}
+
+.inner {
+    composes: ml-8 from global;
+}
+
+.menu {
+    composes: h-full from global;
+    composes: flex from global;
+    composes: justify-center from global;
+    composes: space-x-8 from global;
+}
+
+.link {
+    composes: flex from global;
+    composes: items-center from global;
+    composes: text-sm from global;
+    composes: font-medium from global;
+    composes: text-gray-700 from global;
+    composes: hover_text-gray-800 from global;
+}

@@ -4,11 +4,8 @@ type ClientOnlyComponentProps = {
     children?: JSX.Element
 }
 
-/* eslint-disable-next-line */
-const clientOnly = (WrappableComponent: React.FC<any>) => ({ children, ...delegated }: ClientOnlyComponentProps) => {
+const clientOnly = (Component: React.FC<any>) => function ClientOnlyComponent({ children, ...delegated }: ClientOnlyComponentProps) {
     const [ hasMounted, setHasMounted ] = useState(false);
-
-    console.log(WrappableComponent.displayName)
 
     useEffect(() => {
         setHasMounted(true);
@@ -23,7 +20,7 @@ const clientOnly = (WrappableComponent: React.FC<any>) => ({ children, ...delega
     }
 
     return (
-        <WrappableComponent {...delegated}>{children}</WrappableComponent>
+        <Component {...delegated}>{children}</Component>
     );
 }
 

@@ -9,8 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@adobe/apollo-link-mutation-queue": "^1.1.0",
     "@apollo/client": "^3.6.9",
+    "@magento/pagebuilder": "^7.4.1",
+    "@magento/peregrine": "^12.5.1",
+    "@magento/venia-ui": "^9.6.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.6.0",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -22,6 +30,7 @@
     "autoprefixer": "^10.4.8",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
+    "http-proxy-middleware": "^2.0.6",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
     "typescript": "4.7.4"
@@ -31,6 +40,8 @@
     "@/types": "@types",
     "@/layouts": "src/layouts",
     "@/components": "src/components",
-    "@/styles": "styles"
+    "@/styles": "styles",
+    "@/hooks": "src/hooks",
+    "@/queries": "src/queries"
   }
 }

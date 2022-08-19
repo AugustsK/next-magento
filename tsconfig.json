@@ -21,7 +21,11 @@
       "@/components/*": ["src/components/*"],
       "@/layouts/*": ["src/layouts/*"],
       "@/styles/*": ["styles/*"],
-      "@/app/*": ["src/*"]
+      "@/app/*": ["src/*"],
+      "@/hooks": ["src/hooks"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/queries": ["src/queries"],
+      "@/queries/*": ["src/queries/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

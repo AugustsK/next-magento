@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
-import type { NextPageWithLayout } from '../@types';
+import type { NextPageWithLayout } from '@/types';
 import CheckoutLayout from '@/layouts/checkout'
+import {SharedPageData} from "@/types";
 
 const Checkout: NextPageWithLayout = () => {
   return (
@@ -8,9 +9,9 @@ const Checkout: NextPageWithLayout = () => {
   )
 }
 
-Checkout.getLayout = function getLayout(page: ReactElement) {
+Checkout.getLayout = function getLayout(page: ReactElement, pageProps: SharedPageData) {
   return (
-    <CheckoutLayout>
+    <CheckoutLayout {...pageProps}>
       {page}
     </CheckoutLayout>
   )

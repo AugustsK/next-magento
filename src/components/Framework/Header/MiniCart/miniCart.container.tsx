@@ -1,9 +1,9 @@
 import React from "react";
 import MiniCart from "./miniCart";
-import clientOnly from "../../utils/clientOnly";
+import { createClientOnlyComponent } from "@/app/utils";
 
 const MiniCartWrapper: React.FC<any> = () => {
-    const WrappedMiniCart = clientOnly(MiniCart);
+    const WrappedMiniCart = createClientOnlyComponent(MiniCart);
 
     return (
         <WrappedMiniCart />
