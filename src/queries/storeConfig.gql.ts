@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const getStoreConfig = gql`
     query getStoreConfig {
@@ -19,7 +19,7 @@ export const getStoreConfig = gql`
             default_title
             default_keywords
             welcome
-            
+
             cms_home_page
             cms_no_route
 
@@ -32,7 +32,7 @@ export const getStoreConfig = gql`
             grid_per_page
             list_per_page
             catalog_default_sort_by
-            
+
             root_category_uid
         }
     }

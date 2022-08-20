@@ -1,7 +1,9 @@
 import React, { ReactElement } from 'react'
+
 import type { NextPageWithLayout } from '@/types';
-import CheckoutLayout from '@/layouts/checkout'
 import {SharedPageData} from "@/types";
+
+import CheckoutLayout from '@/layouts/checkout'
 
 const Checkout: NextPageWithLayout = () => {
   return (

@@ -1,8 +1,9 @@
-import type { NextPage, GetStaticProps } from 'next'
-import getPageData from "@/app/data";
-
-import styles from '@/styles/pages/index.module.css'
 import {SharedPageData} from "@/types";
+
+import type { NextPage, GetStaticProps } from 'next'
+
+import getPageData from "@/app/data";
+import styles from '@/styles/pages/index.module.css'
 
 interface HomePageProps extends SharedPageData {}
 

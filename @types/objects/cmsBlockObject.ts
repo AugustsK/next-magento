@@ -1,5 +1,5 @@
 export interface CmsBlockObject {
-    content?: string
-    identifier?: string
-    title?: string
+    content: string
+    identifier: string
+    title: string
 }

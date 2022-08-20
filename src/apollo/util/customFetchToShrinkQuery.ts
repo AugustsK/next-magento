@@ -1,4 +1,4 @@
-import { shrinkQuery } from "@/app/apollo/util/shrinkQuery";
+import { shrinkQuery } from '@/app/apollo/util/shrinkQuery';
 
 /**
  * Intercept and shrink URLs from GET queries.
@@ -8,7 +8,7 @@ import { shrinkQuery } from "@/app/apollo/util/shrinkQuery";
  *
  * `shrinkQuery` encodes the URL in a more efficient way.
  */
-export const customFetchToShrinkQuery = (uri: string|URL, options: RequestInit): Promise<Response> => {
+export const customFetchToShrinkQuery = (uri: string | URL, options: RequestInit): Promise<Response> => {
     const resource = options.method === 'GET' ? shrinkQuery(uri) : uri;
 
     return globalThis.fetch(resource, options);

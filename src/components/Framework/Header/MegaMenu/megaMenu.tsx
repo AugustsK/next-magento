@@ -1,19 +1,22 @@
-import React, { forwardRef } from "react";
-import Link from "next/link";
-import {CategoryTreeObject, StoreConfigObject} from "@/types/objects";
-import { shallowMerge } from "@/app/utils";
+import React, { forwardRef } from 'react';
+
+import { CategoryTreeObject, StoreConfigObject } from '@/types/objects';
+
+import Link from 'next/link';
+
+import { shallowMerge } from '@/app/utils';
 
 import defaultClasses from './megaMenu.module.css';
 
 interface MegaMenuProps {
-    megaMenu?: CategoryTreeObject[]
-    storeConfig?: StoreConfigObject
-    classes?: {
-        root?: string
-        inner?: string
-        menu?: string
-        link?: string
-    }
+    megaMenu: Partial<CategoryTreeObject>[];
+    storeConfig: Partial<StoreConfigObject>;
+    classes?: Partial<{
+        root: string;
+        inner: string;
+        menu: string;
+        link: string;
+    }>;
 }
 
 const MegaMenu: React.FC<MegaMenuProps> = ({ classes: propClasses, storeConfig, megaMenu }) => {
@@ -29,17 +32,15 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ classes: propClasses, storeConfig, 
         <nav className={classes.root}>
             <div className={classes.inner}>
                 <div className={classes.menu}>
-                    {rootCategory?.children?.map((item) => (
+                    {rootCategory?.children?.map(item => (
                         <Link key={item.uid} href={item.url_path || ''} passHref>
-                            <a className={classes.link}>
-                                {item.name}
-                            </a>
+                            <a className={classes.link}>{item.name}</a>
                         </Link>
                     ))}
                 </div>
             </div>
         </nav>
-    )
-}
+    );
+};
 
 export default MegaMenu;

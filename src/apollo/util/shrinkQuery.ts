@@ -11,7 +11,7 @@ import { stripIgnoredCharacters } from 'graphql/utilities/stripIgnoredCharacters
  *     application/x-www-form-urlencoded, which encodes spaces with a single
  *     character
  */
-export function shrinkQuery(fullURL: string|URL): string|URL {
+export function shrinkQuery(fullURL: string | URL): string | URL {
     const url = new URL(fullURL);
 
     // Read from URL implicitly decodes the querystring
@@ -28,4 +28,3 @@ export function shrinkQuery(fullURL: string|URL): string|URL {
 
     return url.toString();
 }
-

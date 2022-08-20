@@ -1,7 +1,8 @@
 import { ApolloClient } from '@apollo/client';
-import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
-import { createCacheInstance } from "@/app/apollo";
-import { createApolloLink } from "@/app/apollo/link";
+import { LocalStorageWrapper, persistCache } from 'apollo3-cache-persist';
+
+import { createCacheInstance } from '@/app/apollo';
+import { createApolloLink } from '@/app/apollo/link';
 
 const createClient = () => {
     const cache = createCacheInstance();
@@ -12,7 +13,7 @@ const createClient = () => {
     if (!ssr) {
         persistCache({
             cache,
-            storage: new LocalStorageWrapper(globalThis.localStorage),
+            storage: new LocalStorageWrapper(globalThis.localStorage)
         });
     }
 
@@ -21,6 +22,6 @@ const createClient = () => {
         cache,
         ssrMode: ssr
     });
-}
+};
 
 export default createClient;

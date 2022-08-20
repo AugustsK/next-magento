@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useAsyncEffect = (asyncFn: () => Promise<any>) => {
     const [result, setResult] = useState(null);
@@ -15,8 +15,10 @@ export const useAsyncEffect = (asyncFn: () => Promise<any>) => {
             }
         });
 
-        return () => { active = false }
+        return () => {
+            active = false;
+        };
     });
 
-    return result
-}
+    return result;
+};

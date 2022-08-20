@@ -1,31 +1,35 @@
-import React from "react";
+import React from 'react';
+
+import { CategoryTreeObject, StoreConfigObject } from '@/types/objects';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { shallowMerge } from '@/app/utils';
+import MegaMenu from '@/components/Framework/Header/MegaMenu';
+
 import AccountMenu from './AccountMenu';
 import MiniCart from './MiniCart';
-import MegaMenu from "@/components/Framework/Header/MegaMenu";
-import {CategoryTreeObject, StoreConfigObject} from "@/types/objects";
-import { shallowMerge } from "@/app/utils";
-import Link from "next/link";
-import Image from 'next/image'
 
 import defaultClasses from './header.module.css';
 
 interface HeaderProps {
-    megaMenu?: CategoryTreeObject[]
-    storeConfig?: StoreConfigObject
-    classes?: {
-        root?: string
-        topBar?: string
-        topBarInner?: string
-        topLeft?: string
-        topCenter?: string
-        topRight?: string
-        mainBar?: string
-        mainBarInner?: string
-        containerWrapper?: string
-        container?: string
-        logoContainer?: string
-        secondaryMenu?: string
-    }
+    megaMenu: Partial<CategoryTreeObject>[];
+    storeConfig: Partial<StoreConfigObject>;
+    classes?: Partial<{
+        root: string;
+        topBar: string;
+        topBarInner: string;
+        topLeft: string;
+        topCenter: string;
+        topRight: string;
+        mainBar: string;
+        mainBarInner: string;
+        containerWrapper: string;
+        container: string;
+        logoContainer: string;
+        secondaryMenu: string;
+    }>;
 }
 
 const Header: React.FC<HeaderProps> = props => {
@@ -36,12 +40,8 @@ const Header: React.FC<HeaderProps> = props => {
         <header className={classes.root}>
             <div className={classes.topBar}>
                 <div className={classes.topBarInner}>
-                    <div className={classes.topLeft}>
-
-                    </div>
-                    <p className={classes.topCenter}>
-                        {storeConfig?.welcome}
-                    </p>
+                    <div className={classes.topLeft}></div>
+                    <p className={classes.topCenter}>{storeConfig?.welcome}</p>
                     <div className={classes.topRight}>
                         <AccountMenu />
                     </div>
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = props => {
                     <div className={classes.containerWrapper}>
                         <div className={classes.container}>
                             <div className={classes.logoContainer}>
-                                <Link href='/'>
+                                <Link href="/">
                                     <a>
                                         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
                                     </a>
@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = props => {
                 </div>
             </div>
         </header>
-    )
-}
+    );
+};
 
 export default Header;

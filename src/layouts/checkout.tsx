@@ -1,6 +1,6 @@
-import type { LayoutProps } from "@types";
+import React from 'react';
 
-import React from "react";
+import type { LayoutProps } from '@types';
 
 const CheckoutLayout: React.FC<LayoutProps> = ({ children }) => {
     return (
@@ -8,14 +8,12 @@ const CheckoutLayout: React.FC<LayoutProps> = ({ children }) => {
             <header>
                 <h1>Checkout Header</h1>
             </header>
-            <section>
-                {children}
-            </section>
+            <section>{children}</section>
             <footer>
                 <h2>Checkout Footer</h2>
             </footer>
         </>
-    )
-}
+    );
+};
 
 export default CheckoutLayout;

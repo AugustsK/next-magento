@@ -1,5 +1,5 @@
+import { ApolloLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import {ApolloLink} from "@apollo/client";
 
 export default function createStoreLink(): ApolloLink {
     return setContext((_, { headers }) => {
@@ -16,4 +16,4 @@ export default function createStoreLink(): ApolloLink {
             }
         };
     });
-};
+}

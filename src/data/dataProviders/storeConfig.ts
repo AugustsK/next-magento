@@ -1,11 +1,15 @@
-import { StoreConfigQuery } from "@/types/queries";
-import { StoreConfigObject } from "@/types/objects";
-import { getStoreConfig } from "@/queries";
-import {ApolloClient, NormalizedCacheObject, ApolloQueryResult} from "@apollo/client";
+import { StoreConfigObject } from '@/types/objects';
+import { StoreConfigQuery } from '@/types/queries';
+
+import { ApolloClient, ApolloQueryResult, NormalizedCacheObject } from '@apollo/client';
+
+import { getStoreConfig } from '@/queries';
 
 type StoreConfigKey = 'storeConfig';
 
-export default async function storeConfig(client: ApolloClient<NormalizedCacheObject>): Promise<[StoreConfigKey, StoreConfigObject]> {
+export default async function storeConfig(
+    client: ApolloClient<NormalizedCacheObject>
+): Promise<[StoreConfigKey, Partial<StoreConfigObject>]> {
     const { data }: ApolloQueryResult<StoreConfigQuery> = await client.query({
         query: getStoreConfig,
         fetchPolicy: 'network-only'
