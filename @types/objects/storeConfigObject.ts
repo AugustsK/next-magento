@@ -15,6 +15,7 @@ export interface StoreConfigObject {
     default_title: string;
     default_keywords: string;
     welcome: string;
+    copyright: string;
 
     cms_home_page: string;
     cms_no_route: string;

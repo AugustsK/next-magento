@@ -1,0 +1,73 @@
+.heading {
+    composes: text-base from global;
+    composes: font-medium from global;
+    composes: text-white from global;
+}
+
+.message {
+    composes: mt-4 from global;
+    composes: text-base from global;
+    composes: text-gray-300 from global;
+}
+
+.form {
+    composes: mt-4 from global;
+    composes: sm_flex from global;
+    composes: sm_max-w-md from global;
+}
+
+.label {
+    composes: sr-only from global;
+}
+
+.input {
+    composes: appearance-none from global;
+    composes: min-w-0 from global;
+    composes: w-full from global;
+    composes: bg-white from global;
+    composes: border from global;
+    composes: border-transparent from global;
+    composes: rounded-md from global;
+    composes: py-2 from global;
+    composes: px-4 from global;
+    composes: text-base from global;
+    composes: text-gray-900 from global;
+    composes: placeholder-gray-500 from global;
+    composes: focus_outline-none from global;
+    composes: focus_ring-2 from global;
+    composes: focus_ring-offset-2 from global;
+    composes: focus_ring-offset-gray-800 from global;
+    composes: focus_ring-white from global;
+    composes: focus_border-white from global;
+    composes: focus_placeholder-gray-400 from global;
+}
+
+.action {
+    composes: mt-3 from global;
+    composes: rounded-md from global;
+    composes: sm_mt-0 from global;
+    composes: sm_ml-3 from global;
+    composes: sm_flex-shrink-0 from global;
+}
+
+.button {
+    composes: w-full from global;
+    composes: bg-indigo-500 from global;
+    composes: border from global;
+    composes: border-transparent from global;
+    composes: rounded-md from global;
+    composes: py-2 from global;
+    composes: px-4 from global;
+    composes: flex from global;
+    composes: items-center from global;
+    composes: justify-center from global;
+    composes: text-base from global;
+    composes: font-medium from global;
+    composes: text-white from global;
+    composes: hover_bg-indigo-600 from global;
+    composes: focus_outline-none from global;
+    composes: focus_ring-2 from global;
+    composes: focus_ring-offset-2 from global;
+    composes: focus_ring-offset-gray-800 from global;
+    composes: focus_ring-indigo-500 from global;
+}

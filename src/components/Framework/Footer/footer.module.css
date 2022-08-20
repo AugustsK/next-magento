@@ -1,0 +1,88 @@
+.root {
+    composes: bg-gray-800 from global;
+}
+
+.container {
+    composes: max-w-7xl from global;
+    composes: mx-auto from global;
+    composes: py-12 from global;
+    composes: px-4 from global;
+    composes: sm_px-6 from global;
+    composes: lg_py-16 from global;
+    composes: lg_px-8 from global;
+}
+
+.main {
+    composes: xl_grid from global;
+    composes: xl_grid-cols-3 from global;
+    composes: xl_gap-8 from global;
+}
+
+.linkWrapper {
+    composes: grid from global;
+    composes: grid-cols-2 from global;
+    composes: gap-8 from global;
+    composes: xl_col-span-2 from global;
+}
+
+.links {
+    composes: md_grid from global;
+    composes: md_grid-cols-2 from global;
+    composes: md_gap-8 from global;
+}
+
+.secondLinkChild {
+    composes: mt-12 from global;
+    composes: md_mt-0 from global;
+}
+
+.linkHeading {
+    composes: text-base from global;
+    composes: font-medium from global;
+    composes: text-white from global;
+}
+
+.list {
+    composes: mt-4 from global;
+    composes: space-y-4 from global;
+}
+
+.link {
+    composes: text-base from global;
+    composes: text-gray-300 from global;
+    composes: hover_text-white from global;
+}
+
+.newsletter {
+    composes: mt-8 from global;
+    composes: xl_mt-0 from global;
+}
+
+.sub {
+    composes: mt-8 from global;
+    composes: border-t from global;
+    composes: border-gray-700 from global;
+    composes: pt-8 from global;
+    composes: md_flex from global;
+    composes: md_items-center from global;
+    composes: md_justify-between from global;
+}
+
+.social {
+    composes: flex from global;
+    composes: space-x-6 from global;
+    composes: md_order-2 from global;
+}
+
+.socialLink {
+    composes: text-gray-400 from global;
+    composes: hover_text-gray-300 from global;
+}
+
+.copyright {
+    composes: mt-8 from global;
+    composes: text-base from global;
+    composes: text-gray-400 from global;
+    composes: md_mt-0 from global;
+    composes: md_order-1 from global;
+}

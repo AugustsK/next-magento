@@ -1,0 +1,29 @@
+.main {
+    --header-height: 104px;
+    --footer-height: 849px;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+@media screen(sm) {
+    .main {
+        --footer-height: 825px;
+    }
+}
+
+@media screen(md) {
+    .main {
+        --footer-height: 523px;
+    }
+}
+
+@media screen(lg) {
+    .main {
+        --footer-height: 555px;
+    }
+}
+
+@media screen(xl) {
+    .main {
+        --footer-height: 401px;
+    }
+}

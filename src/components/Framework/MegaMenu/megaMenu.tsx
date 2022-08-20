@@ -3,7 +3,7 @@ import React, { useCallback, useState, useTransition } from 'react';
 import Link from 'next/link';
 
 import { classNames, shallowMerge } from '@/app/utils';
-import Submenu from '@/components/Framework/Header/MegaMenu/Submenu';
+import Submenu from '@/components/Framework/Submenu';
 import { useStoreDataContext } from '@/context/storeData';
 import { useMagentoUrl } from '@/hooks';
 

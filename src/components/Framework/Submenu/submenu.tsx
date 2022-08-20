@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React from 'react';
 
 import { CategoryTreeObject } from '@/types/objects';
 
@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { shallowMerge } from '@/app/utils';
 import { useMagentoUrl } from '@/hooks';
+import { useUniqueId } from '@/hooks';
 
 import defaultClasses from './submenu.module.css';
 
@@ -25,9 +26,7 @@ interface SubmenuProps {
 const Submenu: React.FC<SubmenuProps> = ({ item, classes: propClasses }) => {
     const classes = shallowMerge(defaultClasses, propClasses);
     const { makeCategoryUrl } = useMagentoUrl();
-    const id = useId();
-
-    const makeId = (str: string) => `${id}-${str}`;
+    const { id } = useUniqueId();
 
     return (
         <>
@@ -37,12 +36,12 @@ const Submenu: React.FC<SubmenuProps> = ({ item, classes: propClasses }) => {
                     {item?.children?.map(column => (
                         <div key={column.uid}>
                             <Link href={makeCategoryUrl(column)} passHref>
-                                <a className={classes.heading} id={makeId('columnName')}>
+                                <a className={classes.heading} id={id`column--${column.uid}`}>
                                     {column.name}
                                 </a>
                             </Link>
                             {(column?.children?.length || 0) > 0 && (
-                                <ul className={classes.list} role="list" aria-labelledby={makeId('columnName')}>
+                                <ul className={classes.list} role="list" aria-labelledby={id`column--${column.uid}`}>
                                     {column?.children?.map(columnItem => (
                                         <li key={columnItem.uid} className={classes.item}>
                                             <Link href={makeCategoryUrl(columnItem)} passHref>

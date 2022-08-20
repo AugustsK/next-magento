@@ -7,6 +7,7 @@ const nextConfig = {
 
         return {
             beforeFiles: [
+                // graphql proxy for client-side
                 {
                     source: '/api/:graphql*',
                     destination: apiBase + '/:graphql*'

@@ -19,6 +19,7 @@ export const getStoreConfig = gql`
             default_title
             default_keywords
             welcome
+            copyright
 
             cms_home_page
             cms_no_route

@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { shallowMerge } from '@/app/utils';
-import MegaMenu from '@/components/Framework/Header/MegaMenu';
+import MegaMenu from '@/components/Framework/MegaMenu';
 import { useStoreDataContext } from '@/context/storeData';
 
-import AccountMenu from './AccountMenu';
-import MiniCart from './MiniCart';
+import AccountMenu from '../AccountMenu';
+import MiniCart from '../MiniCart';
 
 import defaultClasses from './header.module.css';
 
@@ -49,8 +48,10 @@ const Header: React.FC<HeaderProps> = props => {
                     <div className={classes.container}>
                         <div className={classes.logoContainer}>
                             <Link href="/">
-                                <a>
-                                    <Image src="/vercel.svg" alt="Vercel Logo: logo" width={72} height={16} />
+                                <a className="flex">
+                                    <picture>
+                                        <img src="/magento.svg" alt="" width={48} height={48} loading={'lazy'} />
+                                    </picture>
                                 </a>
                             </Link>
                         </div>

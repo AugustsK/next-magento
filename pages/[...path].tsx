@@ -1,9 +1,10 @@
 import { SharedPageData } from '@/types';
+import { CategoryTreeObject } from '@/types/objects';
 import { RouteObject } from '@/types/objects/routeObject';
 import { RouteQuery } from '@/types/queries/routeQuery';
 
 import { ApolloQueryResult } from '@apollo/client';
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 
 import getPageData, { client } from '@/app/data';
 import { getRoute } from '@/queries/route.gql';
@@ -22,7 +23,7 @@ const MagentoRoute: NextPage<MagentoRouteProps> = ({ route }) => {
 
 export default MagentoRoute;
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getStaticProps: GetStaticProps = async context => {
     const urlPath = ((context.params?.path as string[]) || []).join('/');
     const dataPromise = getPageData();
     const { data: urlData }: ApolloQueryResult<RouteQuery> = await client.query({
@@ -44,6 +45,42 @@ export const getServerSideProps: GetServerSideProps = async context => {
         props: {
             ...data,
             route: urlData
-        }
+        },
+        revalidate: parseInt(process.env.PAGE_REVALIDATE_TIMEOUT || '300', 10)
     };
 };
+
+interface Path {
+    params: {
+        path: string[];
+    };
+}
+
+export async function getStaticPaths() {
+    const { storeConfig, megaMenu } = await getPageData();
+    const paths: Path[] = [];
+    const suffix = (storeConfig?.category_url_suffix || '').trim();
+
+    // Generate category paths
+    const iterateChildren = (children: Partial<CategoryTreeObject>[]) =>
+        children.forEach(category => {
+            if (category.url_path) {
+                paths.push({
+                    params: {
+                        path: (category.url_path + suffix).split('/')
+                    }
+                });
+            }
+
+            if (category?.children?.length) {
+                iterateChildren(category.children);
+            }
+        });
+
+    iterateChildren(megaMenu);
+
+    return {
+        paths,
+        fallback: 'blocking'
+    };
+}

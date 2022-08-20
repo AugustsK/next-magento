@@ -16,11 +16,11 @@ const AccountMenu: React.FC<AccountMenuProps> = props => {
 
     return (
         <>
-            <a href="#" className={classes.link}>
+            <a href="@/components/Framework/AccountMenu/accountMenu#" className={classes.link}>
                 Create an account
             </a>
             <span className={classes.separator} aria-hidden={true} />
-            <a href="#" className={classes.link}>
+            <a href="@/components/Framework/AccountMenu/accountMenu#" className={classes.link}>
                 Sign in
             </a>
         </>
