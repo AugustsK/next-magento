@@ -1,8 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## next-magento
 
-First, run the development server:
+Copy `.env.example` to `.env` and set MAGENTO_BACKEND_URL
 
 ```bash
 npm run dev
@@ -12,23 +12,38 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### What is it?
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Weekend project - an attempt to re-create Magento storefront as Next.js project.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### Currently implemented
 
-## Learn More
+1. Apollo links:
+   1. httpLink to map query data in URL for Varnish caching
+   1. storeLink to pass store code and currency in graphql request headers
+1. MagentoRoute catch-all component that queries graphql for route info and returns route data together with necessary payload (like cmsPage, product query or category query)
+   1. all categories from megaMenu are exported as static paths and generated during SSG phase
+   1. page revalidation can be controlled via ENV variable. Default is 5 minutes
+1. Generic data (storeConfig, megaMenu) queried on all pages during SSR or SSG phase
+1. MegaMenu implemented
+1. Generic footer (Venia data)
+1. Homepage content is pulled from CMS page based on storeConfig
+1. Various little things
+   1. Higher-order component for wrapping CSR components
+   1. URL resolver for categories and products to automatically apply URL suffix based on storeConfig
+   1. Namespaced htmlId tagged template fn based on React 18 useId hook
+   1. storeConfig, cmsPage and category queries/interfaces/objects mapped to TS
+   1. Queries in place to fetch route, cmsPage, product data and categories
+   1. Different layout for Checkout with default fallback layout
+   1. Apollo client config for both CSR and SSR modes
+   1. Backend graphql endpoint masked via proxy for CSR
 
-To learn more about Next.js, take a look at the following resources:
+#### Biggest challenges so far
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Pagebuilder does not work OOTB. Might be due to next.js webpack config OR the fact that I'm doing this in Typescript.
+2. As the entire data flow is different, relying heavily on SSG (and SSR as a fallback), most (if not all) Venia/Peregrine business logic cannot be used. Therefore I'm not even trying to do it. The only part I wish to utilize as-is is Pagebuilder package, but that has its own hurdles (refer to previous point).
+3. Not really a challenge, just something I haven't yet decided about - authorization token. PWA Studio keeps it entirely client-side (token requested, stored in localStorage and then used through-out). Same approach could be used here, however, a better approach might be utilizing next.js sessions and keeping Magento authorization away from client (essentially client authenticates against next.js express server, which in turn authenticates through graphql with Magento). 2nd approach might prove a bit challening.
+4. While SSG revalidation can be easily implemented from next.js side (providing api route with secret token that allows to invalidate any route), having Magento (or varnish?! sure not...) call this URL at correct times might be quite a challenge. Could be done in parts:
+   1. Magento plugin for FPC cache clear from admin that also calls next.js app with a wildcard rule as a MVP
+   2. Have magento call next.js invalidate route based on cache identities that are being cleared. Might make Magento quite a bit slower
+   3. Queue invalidated cache identities on magento side and empty the queue asynchronously, essentially removing the necessity for Magento to call next.js invalidate api during runtime.
