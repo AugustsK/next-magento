@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Copy `.env.example` to `.env` and set MAGENTO_BACKEND_URL
 
+Start DEV server
+
 ```bash
 npm run dev
 # or
