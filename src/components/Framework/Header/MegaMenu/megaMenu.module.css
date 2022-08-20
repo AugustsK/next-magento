@@ -37,7 +37,7 @@
 }
 
 @layer components {
-    .link:hover .dropdown {
+    .link:hover .dropdown:not(.hideDropdown) {
         @apply block;
     }
 }
