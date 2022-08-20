@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = props => {
                         <div className={classes.logoContainer}>
                             <Link href="/">
                                 <a>
-                                    <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+                                    <Image src="/vercel.svg" alt="Vercel Logo: logo" width={72} height={16} />
                                 </a>
                             </Link>
                         </div>
