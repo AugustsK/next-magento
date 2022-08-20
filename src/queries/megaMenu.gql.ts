@@ -23,6 +23,13 @@ export const getMegaMenu = gql`
                         name
                         position
                         url_path
+                        children {
+                            uid
+                            include_in_menu
+                            name
+                            position
+                            url_path
+                        }
                     }
                 }
             }

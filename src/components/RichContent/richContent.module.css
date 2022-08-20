@@ -1,3 +1,6 @@
 .root {
     composes: relative from global;
+    composes: prose from global;
+    composes: lg_prose-xl from global;
+    composes: mx-auto from global;
 }

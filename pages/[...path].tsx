@@ -34,10 +34,15 @@ export const getServerSideProps: GetServerSideProps = async context => {
     });
     const data = await dataPromise;
 
+    if (!urlData.route) {
+        return {
+            notFound: true
+        };
+    }
+
     return {
         props: {
-            storeConfig: data.storeConfig,
-            megaMenu: data.megaMenu,
+            ...data,
             route: urlData
         }
     };

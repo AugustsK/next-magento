@@ -13,9 +13,24 @@ module.exports = {
     },
     separator: '_',
     theme: {
-        extend: {}
+        extend: {
+            zIndex: {
+                '1': '1',
+                '2': '2',
+                '3': '3',
+                '4': '4',
+                '5': '5',
+                '6': '6',
+                '7': '7',
+                '8': '8',
+                '9': '9',
+            }
+        }
     },
-    plugins: [require('@tailwindcss/forms')]
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography')
+    ]
 };
 
 const matcher = /(?<=composes:.*)(\b\S+\b)(?=.*from global;)/g;

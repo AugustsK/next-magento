@@ -1,17 +1,10 @@
+@tailwind components;
+
 .root {
     composes: h-full from global;
     composes: flex from global;
-}
-
-.inner {
-    composes: ml-8 from global;
-}
-
-.menu {
-    composes: h-full from global;
-    composes: flex from global;
     composes: justify-center from global;
-    composes: space-x-8 from global;
+    composes: px-4 from global;
 }
 
 .link {
@@ -20,13 +13,31 @@
     composes: text-sm from global;
     composes: font-medium from global;
     composes: text-gray-700 from global;
-    composes: hover_text-gray-800 from global;
+    composes: border-b-2 from global;
+    composes: border-transparent from global;
+    composes: hover_text-indigo-600 from global;
+    composes: hover_border-indigo-600 from global;
+}
+
+.anchor {
+    composes: h-full from global;
+    composes: flex from global;
+    composes: items-center from global;
+    composes: px-4 from global;
 }
 
 .dropdown {
+    composes: hidden from global;
     composes: absolute from global;
     composes: top-full from global;
     composes: inset-x-0 from global;
     composes: text-gray-500 from global;
     composes: sm_text-sm from global;
+    composes: z-1 from global;
+}
+
+@layer components {
+    .link:hover .dropdown {
+        @apply block;
+    }
 }

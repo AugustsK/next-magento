@@ -10,7 +10,11 @@ const App: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
     const getLayout =
         Component.getLayout ?? ((page, pageProps) => <DefaultLayout {...pageProps}>{page}</DefaultLayout>);
 
-    return <AppProvider>{getLayout(<Component {...pageProps} />, pageProps)}</AppProvider>;
+    return (
+        <AppProvider storeConfig={pageProps.storeConfig} megaMenu={pageProps.megaMenu}>
+            {getLayout(<Component {...pageProps} />, pageProps)}
+        </AppProvider>
+    );
 };
 
 export default App;

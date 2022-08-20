@@ -10,11 +10,11 @@ import CmsPage from '@/components/CmsPage';
 import { getCmsPage } from '@/queries/cmsPage.gql';
 import styles from '@/styles/pages/index.module.css';
 
-interface HomePageProps extends SharedPageData {
+interface NotFoundProps extends SharedPageData {
     cmsPage: Partial<CmsPageObject>;
 }
 
-const Home: NextPage<HomePageProps> = ({ cmsPage }) => {
+const NotFound: NextPage<NotFoundProps> = ({ cmsPage }) => {
     return (
         <div className={styles.container}>
             <CmsPage cmsPage={cmsPage} />
@@ -22,17 +22,17 @@ const Home: NextPage<HomePageProps> = ({ cmsPage }) => {
     );
 };
 
-export default Home;
+export default NotFound;
 
 export const getStaticProps: GetStaticProps = async () => {
     const data = await getPageData();
     const {
-        storeConfig: { cms_home_page }
+        storeConfig: { cms_no_route }
     } = data;
     const { data: cmsPageData }: ApolloQueryResult<CmsPageQuery> = await client.query({
         query: getCmsPage,
         variables: {
-            identifier: cms_home_page
+            identifier: cms_no_route
         },
         fetchPolicy: 'network-only'
     });

@@ -1,5 +1,6 @@
 .root {
     composes: relative from global;
+    composes: z-1 from global;
 }
 
 .topBar {
@@ -44,6 +45,7 @@
 
 .mainBar {
     composes: bg-white from global;
+    composes: relative from global;
 }
 
 .mainBarInner {
@@ -54,16 +56,13 @@
     composes: lg_px-8 from global;
 }
 
-.containerWrapper {
-    composes: border-b from global;
-    composes: border-gray-200 from global;
-}
-
 .container {
     composes: h-16 from global;
     composes: flex from global;
     composes: items-center from global;
     composes: justify-between from global;
+    composes: border-b from global;
+    composes: border-gray-200 from global;
 }
 
 .logoContainer {

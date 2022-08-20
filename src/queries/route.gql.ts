@@ -1,8 +1,5 @@
 import { gql } from '@apollo/client';
 
-import { CmsPageFragment } from '@/queries/fragments/cmsPage.gql';
-import { ProductFragment } from '@/queries/fragments/product.gql';
-
 export const getRoute = gql`
     query getRoute($url: String!) {
         route(url: $url) {

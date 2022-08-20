@@ -1,0 +1,47 @@
+.shadow {
+    composes: absolute from global;
+    composes: inset-0 from global;
+    composes: top-1/2 from global;
+    composes: bg-white from global;
+    composes: shadow from global;
+}
+
+.root {
+    composes: relative from global;
+    composes: bg-white from global;
+}
+
+.inner {
+    composes: max-w-7xl from global;
+    composes: mx-auto from global;
+    composes: px-8 from global;
+    composes: pt-10 from global;
+    composes: pb-12 from global;
+    composes: grid from global;
+    composes: grid-cols-4 from global;
+    composes: items-start from global;
+    composes: gap-y-10 from global;
+    composes: gap-x-8 from global;
+}
+
+.heading {
+    composes: font-medium from global;
+    composes: text-gray-900 from global;
+    composes: hover_text-indigo-600 from global;
+}
+
+.list {
+    composes: mt-6 from global;
+    composes: space-y-6 from global;
+    composes: sm_mt-4 from global;
+    composes: sm_space-y-4 from global;
+}
+
+.item {
+    composes: flex from global;
+}
+
+.anchor {
+    composes: font-normal from global;
+    composes: hover_text-gray-800 from global;
+}

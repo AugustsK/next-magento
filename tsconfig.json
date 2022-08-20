@@ -19,6 +19,7 @@
       "@/types": ["@types"],
       "@/types/*": ["@types/*"],
       "@/components/*": ["src/components/*"],
+      "@/context/*": ["src/context/*"],
       "@/layouts/*": ["src/layouts/*"],
       "@/styles/*": ["styles/*"],
       "@/app/*": ["src/*"],
