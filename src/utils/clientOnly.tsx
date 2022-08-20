@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 type ClientOnlyComponentProps = {
     children?: JSX.Element;
+    [key: string]: any;
 };
 
 const clientOnly = (Component: React.FC<any>) =>

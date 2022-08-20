@@ -18,6 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Weekend project - an attempt to re-create Magento storefront as Next.js project.
 
+Current deployment with venia.magento.com as backend -> https://next-magento.augusts.dev/
+
 #### Currently implemented
 
 1. Apollo links:

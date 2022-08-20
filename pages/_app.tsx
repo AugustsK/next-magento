@@ -11,7 +11,11 @@ const App: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
         Component.getLayout ?? ((page, pageProps) => <DefaultLayout {...pageProps}>{page}</DefaultLayout>);
 
     return (
-        <AppProvider storeConfig={pageProps.storeConfig} megaMenu={pageProps.megaMenu}>
+        <AppProvider
+            storeConfig={pageProps.storeConfig}
+            reCaptchaConfig={pageProps.reCaptchaConfig}
+            megaMenu={pageProps.megaMenu}
+        >
             {getLayout(<Component {...pageProps} />, pageProps)}
         </AppProvider>
     );

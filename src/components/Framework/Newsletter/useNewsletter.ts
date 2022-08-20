@@ -1,13 +1,20 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { SUBSCRIBE_STATUS } from '@/types/mutations/subscribeEmailToNewsletter';
+import { ReCaptchaFormEnum } from '@/types/objects';
 
 import { useMutation } from '@apollo/client';
 
 import { subscribeEmailToNewsletterMutation } from '@/components/Framework/Newsletter/newsletter.gql';
+import { useReCaptcha } from '@/hooks';
 
 export const useNewsletter = () => {
     const [email, setEmail] = useState('');
+
+    useReCaptcha({
+        formAction: 'newsletterSignup',
+        currentForm: ReCaptchaFormEnum.NEWSLETTER
+    });
 
     const [mutate, { data, loading, error }] = useMutation<{ subscribeEmailToNewsletter: { status: string } }>(
         subscribeEmailToNewsletterMutation
