@@ -3,6 +3,8 @@ import React from 'react';
 import { shallowMerge } from '@/app/utils';
 import { useUniqueId } from '@/hooks';
 
+import { useNewsletter } from './useNewsletter';
+
 import defaultClasses from './newsletter.module.css';
 
 interface NewsletterProps {
@@ -20,12 +22,13 @@ interface NewsletterProps {
 const Newsletter: React.FC<NewsletterProps> = props => {
     const classes = shallowMerge(defaultClasses, props.classes);
     const { id } = useUniqueId();
+    const { email, loading, isSubmitted, onSubmit, onChange } = useNewsletter();
 
     return (
         <>
             <h3 className={classes.heading}>Subscribe to our newsletter</h3>
             <p className={classes.message}>The latest news, articles, and resources, sent to your inbox weekly.</p>
-            <form className={classes.form} onSubmit={() => {}}>
+            <form className={classes.form} onSubmit={onSubmit}>
                 <label htmlFor={id`email`} className={classes.label}>
                     Email address
                 </label>
@@ -37,9 +40,12 @@ const Newsletter: React.FC<NewsletterProps> = props => {
                     required
                     className={classes.input}
                     placeholder="Enter your email"
+                    disabled={loading}
+                    value={email}
+                    onChange={onChange}
                 />
                 <div className={classes.action}>
-                    <button type="submit" className={classes.button}>
+                    <button type="submit" className={classes.button} disabled={loading || isSubmitted}>
                         Subscribe
                     </button>
                 </div>

@@ -111,7 +111,7 @@ const Footer: React.FC<FooterProps> = props => {
                             </a>
                         ))}
                     </div>
-                    <p className={classes.copyright}>{storeConfig.copyright}</p>
+                    <p className={classes.copyright}>{storeConfig?.copyright}</p>
                 </div>
             </div>
         </footer>
