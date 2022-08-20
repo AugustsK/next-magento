@@ -22,3 +22,11 @@
     composes: text-gray-700 from global;
     composes: hover_text-gray-800 from global;
 }
+
+.dropdown {
+    composes: absolute from global;
+    composes: top-full from global;
+    composes: inset-x-0 from global;
+    composes: text-gray-500 from global;
+    composes: sm_text-sm from global;
+}

@@ -1,7 +1,6 @@
-import { CategoryInterface } from "@/types/interfaces";
+import { CategoryInterface } from '@/types/interfaces';
 
-export interface CategoryTreeObject extends CategoryInterface
-{
-    children: Partial<CategoryInterface>[]
-    children_count: number
+export interface CategoryTreeObject extends CategoryInterface {
+    children: Partial<CategoryInterface>[];
+    children_count: number;
 }

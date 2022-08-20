@@ -1,5 +1,5 @@
-import { StoreConfigObject } from "@/types/objects";
+import { StoreConfigObject } from '@/types/objects';
 
 export interface StoreConfigQuery {
-    storeConfig: Partial<StoreConfigObject>
+    storeConfig: Partial<StoreConfigObject>;
 }

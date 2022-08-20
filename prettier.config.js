@@ -10,7 +10,8 @@ const config = {
         '^@/types(.*)$', // Type declarations
         '^@?[a-zA-Z0-9]+', // External packages
         '^@/(.*)$', // Internal packages
-        '^.(.*(?<!(.css|.svg|.jpg|.png)))$', // Relative packages that are not known asset types
+        '^.(.*(?<!(.css|.svg|.jpg|.png|.gql)))$', // Relative packages that are not known asset types
+        '(.gql)$', // GraphQL
         '(.*(.svg|.jpg|.png))$', // Known asset types (svg, png, jpg)
         '(.css)$' // CSS files
     ],

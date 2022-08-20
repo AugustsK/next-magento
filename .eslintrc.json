@@ -1,6 +1,8 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "no-multiple-empty-lines": "error"
+    "no-multiple-empty-lines": "error",
+    "no-unused-vars": "error",
+    "no-multi-spaces": "error"
   }
 }

@@ -4,7 +4,8 @@ module.exports = {
         files: [
             './pages/**/*.{js,ts,jsx,tsx,module.css}',
             './src/**/*.{js,ts,jsx,tsx,module.css}',
-            './styles/**/*.{js,ts,jsx,tsx,module.css}'
+            './styles/**/*.{js,ts,jsx,tsx,module.css}',
+            'node_modules/@magento/**/*.{js,ts,jsx,tsx,module.css}',
         ],
         extract: {
             wtf: content => content.match(matcher) || []

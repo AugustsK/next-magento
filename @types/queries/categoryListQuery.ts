@@ -1,6 +1,5 @@
-import { CategoryTreeObject } from "@/types/objects";
+import { CategoryTreeObject } from '@/types/objects';
 
-export interface CategoryListQuery
-{
-    categoryList: Partial<CategoryTreeObject>[]
+export interface CategoryListQuery {
+    categoryList: Partial<CategoryTreeObject>[];
 }

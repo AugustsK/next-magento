@@ -8,12 +8,13 @@
     "start": "next start",
     "eslint": "next lint",
     "lint": "next lint && yarn run prettier --check",
-    "prettier": "prettier --loglevel warn --ignore-path .gitignore './**/src/**/*.@(css|graphql|js|ts|jsx|tsx)' '*.js'",
+    "prettier": "prettier --loglevel warn --ignore-path .gitignore 'src/**/*.@(css|graphql|js|ts|jsx|tsx)' 'pages/**/*.@(css|graphql|js|ts|jsx|tsx)' 'styles/**/*.@(css)' '@types/**/*.ts'",
     "format": "yarn run -s prettier --write && yarn run eslint --fix"
   },
   "dependencies": {
     "@adobe/apollo-link-mutation-queue": "^1.1.0",
     "@apollo/client": "^3.6.9",
+    "@headlessui/react": "^1.6.6",
     "@magento/pagebuilder": "^7.4.1",
     "@magento/peregrine": "^12.5.1",
     "@magento/venia-ui": "^9.6.0",
