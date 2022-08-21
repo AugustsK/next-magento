@@ -10,8 +10,9 @@ import { useReCaptcha } from '@/hooks';
 
 export const useNewsletter = () => {
     const [email, setEmail] = useState('');
+    const [recaptchaToken, setRecaptchaToken] = useState('');
 
-    useReCaptcha({
+    const { inlineBadge, getReCaptchaData } = useReCaptcha({
         formAction: 'newsletterSignup',
         currentForm: ReCaptchaFormEnum.NEWSLETTER
     });
@@ -29,14 +30,19 @@ export const useNewsletter = () => {
         async event => {
             event.preventDefault();
 
+            const recaptchaData = await getReCaptchaData(recaptchaToken);
+
             await mutate({
                 variables: {
                     email
-                }
+                },
+                ...recaptchaData
             });
         },
-        [email, mutate]
+        [email, getReCaptchaData, mutate, recaptchaToken]
     );
+
+    const onRecaptchaVerify = useCallback(setRecaptchaToken, [setRecaptchaToken]);
 
     useEffect(() => {
         if (error) {
@@ -70,8 +76,10 @@ export const useNewsletter = () => {
     return {
         email,
         loading,
+        inlineBadge,
         isSubmitted: !loading && data?.subscribeEmailToNewsletter.status === SUBSCRIBE_STATUS.SUBSCRIBED,
         onChange,
+        onRecaptchaVerify,
         onSubmit
     };
 };

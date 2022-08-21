@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
+
 import { shallowMerge } from '@/app/utils';
 import { useUniqueId } from '@/hooks';
 
@@ -22,7 +24,7 @@ interface NewsletterProps {
 const Newsletter: React.FC<NewsletterProps> = props => {
     const classes = shallowMerge(defaultClasses, props.classes);
     const { id } = useUniqueId();
-    const { email, loading, isSubmitted, onSubmit, onChange } = useNewsletter();
+    const { email, loading, inlineBadge, isSubmitted, onChange, onRecaptchaVerify, onSubmit } = useNewsletter();
 
     return (
         <>
@@ -44,6 +46,7 @@ const Newsletter: React.FC<NewsletterProps> = props => {
                     value={email}
                     onChange={onChange}
                 />
+                {inlineBadge && <GoogleReCaptcha onVerify={onRecaptchaVerify} />}
                 <div className={classes.action}>
                     <button type="submit" className={classes.button} disabled={loading || isSubmitted}>
                         Subscribe

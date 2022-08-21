@@ -12,7 +12,7 @@ export enum ReCaptchaFormEnum {
 }
 
 export interface RecaptchaConfigObject {
-    badge_position: string;
+    badge_position: 'inline' | 'bottomleft' | 'bottomright';
     failure_message: string;
     forms: ReCaptchaFormEnum[];
     language_code: string;

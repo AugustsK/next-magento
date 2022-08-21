@@ -1,11 +1,9 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 
-import Script from 'next/script';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
-import { createClientOnlyComponent } from '@/app/utils';
 import { useStoreDataContext } from '@/context/storeData';
-
-const GOOGLE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api.js';
+import { useUniqueId } from '@/hooks';
 
 interface IReCaptchaContext {
     setShouldLoad: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,26 +21,27 @@ const ReCaptchaContextProvider: React.FC<ReCaptchaContextProviderProps> = props 
     const { children } = props;
     const [shouldLoad, setShouldLoad] = useState(false);
     const { reCaptchaConfig } = useStoreDataContext();
-    const ClientOnlyScript = createClientOnlyComponent(Script);
+    const { id } = useUniqueId();
     const contextValue = useMemo(() => ({ setShouldLoad }), [setShouldLoad]);
-
-    const scriptUrl = new URL(GOOGLE_RECAPTCHA_URL);
-
-    scriptUrl.searchParams.append('badge', reCaptchaConfig?.badge_position || 'bottomright');
-    scriptUrl.searchParams.append(
-        'render',
-        reCaptchaConfig?.badge_position === 'inline' ? 'explicit' : reCaptchaConfig?.website_key
-    );
-    scriptUrl.searchParams.append('onload', 'onloadRecaptchaCallback');
-
-    if (reCaptchaConfig?.language_code) {
-        scriptUrl.searchParams.append('hl', reCaptchaConfig.language_code);
-    }
 
     return (
         <ReCaptchaContext.Provider value={contextValue}>
-            {children}
-            {shouldLoad && <ClientOnlyScript id="recaptcha-js" src={scriptUrl.toString()} />}
+            <GoogleReCaptchaProvider
+                reCaptchaKey={shouldLoad ? reCaptchaConfig?.website_key : ''}
+                language={reCaptchaConfig?.language_code}
+                container={
+                    reCaptchaConfig?.badge_position === 'inline'
+                        ? {
+                              element: id`recaptcha`,
+                              parameters: {
+                                  badge: reCaptchaConfig?.badge_position
+                              }
+                          }
+                        : undefined
+                }
+            >
+                {children}
+            </GoogleReCaptchaProvider>
         </ReCaptchaContext.Provider>
     );
 };

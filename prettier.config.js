@@ -5,6 +5,9 @@ const config = {
     singleQuote: true,
     tabWidth: 4,
     trailingComma: 'none',
+    bracketSameLine: false,
+    quoteProps: "consistent",
+    bracketSpacing: true,
     importOrder: [
         '^react$', // React as first import always
         '^@/types(.*)$', // Type declarations
