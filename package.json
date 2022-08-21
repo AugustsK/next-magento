@@ -9,7 +9,9 @@
     "eslint": "next lint",
     "lint": "next lint && yarn run prettier --check",
     "prettier": "prettier --loglevel warn --ignore-path .gitignore 'src/**/*.@(css|graphql|js|ts|jsx|tsx)'",
-    "format": "yarn run -s prettier --write && yarn run eslint --fix"
+    "format": "yarn run -s prettier --write && yarn run eslint --fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@adobe/apollo-link-mutation-queue": "^1.1.0",
@@ -32,17 +34,30 @@
     "react-google-recaptcha-v3": "^1.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack5": "^6.5.10",
+    "@storybook/manager-webpack5": "^6.5.10",
+    "@storybook/react": "^6.5.10",
+    "@storybook/testing-library": "^0.0.13",
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/node": "18.7.6",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.8",
+    "babel-loader": "^8.2.5",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
+    "eslint-plugin-storybook": "^0.6.4",
     "http-proxy-middleware": "^2.0.6",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
+    "storybook-addon-next": "^1.6.7",
     "tailwindcss": "^3.1.8",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typescript": "4.7.4"
   }
 }

@@ -69,7 +69,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ route, classes: propClasses
 
     const priceFormat = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD',
+        currency: process.env.NEXT_PUBLIC_STORE_VIEW_CURRENCY,
         maximumFractionDigits: 2
     });
 

@@ -1,0 +1,65 @@
+.root {
+    composes: inline-flex from global;
+    composes: items-center from global;
+    composes: border from global;
+    composes: font-medium from global;
+    composes: shadow-sm from global;
+    composes: focus_outline-none from global;
+    composes: focus_ring-2 from global;
+    composes: focus_ring-offset-2 from global;
+}
+
+.type_primary {
+    composes: border-transparent from global;
+    composes: text-white from global;
+    composes: bg-indigo-600 from global;
+    composes: hover_bg-indigo-700 from global;
+    composes: focus_ring-indigo-500 from global;
+}
+
+.type_secondary {
+    composes: border-transparent from global;
+    composes: text-indigo-700 from global;
+    composes: bg-indigo-100 from global;
+    composes: hover_bg-indigo-200 from global;
+    composes: focus_ring-indigo-500 from global;
+}
+
+.type_tertiary {
+    composes: border-gray-300 from global;
+    composes: text-gray-700 from global;
+    composes: bg-white from global;
+    composes: hover_bg-gray-50 from global;
+    composes: focus_ring-indigo-500 from global;
+}
+
+.size_xs {
+    composes: px-2.5 from global;
+    composes: py-1.5 from global;
+    composes: text-xs from global;
+}
+
+.size_sm {
+    composes: px-3 from global;
+    composes: py-2 from global;
+    composes: text-sm from global;
+    composes: leading-4 from global;
+}
+
+.size_md {
+    composes: px-4 from global;
+    composes: py-2 from global;
+    composes: text-sm from global;
+}
+
+.size_lg {
+    composes: px-4 from global;
+    composes: py-2 from global;
+    composes: text-base from global;
+}
+
+.size_xl {
+    composes: px-6 from global;
+    composes: py-3 from global;
+    composes: text-base from global;
+}
