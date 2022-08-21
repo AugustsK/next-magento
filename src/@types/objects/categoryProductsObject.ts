@@ -1,5 +1,5 @@
-import { ProductInterface } from '@/types/interfaces';
-import { SearchResultPageInfoObject } from '@/types/objects/searchResultPageInfoObject';
+import { ProductInterface } from '@/app/@types/interfaces';
+import { SearchResultPageInfoObject } from '@/app/@types/objects/searchResultPageInfoObject';
 
 export interface CategoryProductsObject {
     items: Partial<ProductInterface>[];

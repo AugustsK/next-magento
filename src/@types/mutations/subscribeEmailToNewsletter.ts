@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export enum SUBSCRIBE_STATUS {
     NOT_ACTIVE = 'NOT_ACTIVE',
     SUBSCRIBED = 'SUBSCRIBED',

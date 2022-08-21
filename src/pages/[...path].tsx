@@ -1,39 +1,74 @@
+import React, { Suspense } from 'react';
+
 import { SharedPageData } from '@/types';
 import { CategoryTreeObject } from '@/types/objects';
-import { RouteObject } from '@/types/objects/routeObject';
+import { ROUTE_TYPE_ENUM, RouteObject } from '@/types/objects/routeObject';
 import { RouteQuery } from '@/types/queries/routeQuery';
 
 import { ApolloQueryResult } from '@apollo/client';
 import type { GetStaticProps, NextPage } from 'next';
+import dynamic from 'next/dynamic';
 
 import getPageData, { client } from '@/app/data';
 import { getRoute } from '@/queries/route.gql';
+
+const DynamicCmsPage = dynamic(() => import('@/components/CmsPage'));
+const DynamicCategoryPage = dynamic(() => import('@/components/CategoryPage'));
+const DynamicProductPage = dynamic(() => import('@/components/ProductPage'));
 
 interface MagentoRouteProps extends SharedPageData {
     route: Partial<RouteObject>;
 }
 
 const MagentoRoute: NextPage<MagentoRouteProps> = ({ route }) => {
-    return (
-        <div>
-            <pre>{JSON.stringify(route, null, 2)}</pre>
-        </div>
-    );
+    const { type } = route;
+
+    switch (type) {
+        case ROUTE_TYPE_ENUM.CMS_PAGE:
+            return (
+                <Suspense fallback={'Loading...'}>
+                    <DynamicCmsPage cmsPage={route} />
+                </Suspense>
+            );
+        case ROUTE_TYPE_ENUM.CATEGORY:
+            return (
+                <Suspense fallback={'Loading...'}>
+                    <DynamicCategoryPage route={route} />
+                </Suspense>
+            );
+        case ROUTE_TYPE_ENUM.PRODUCT:
+            return (
+                <Suspense fallback={'Loading...'}>
+                    <DynamicProductPage route={route} />
+                </Suspense>
+            );
+    }
+
+    return <div>Should never get here...</div>;
 };
 
 export default MagentoRoute;
 
 export const getStaticProps: GetStaticProps = async context => {
+    const data = await getPageData();
     const urlPath = ((context.params?.path as string[]) || []).join('/');
-    const dataPromise = getPageData();
+
+    const categoryVars = {
+        currentPage: 1,
+        pageSize: data?.storeConfig?.grid_per_page || 12,
+        sort: {
+            [data?.storeConfig?.default_sort_by || 'position']: 'ASC'
+        }
+    };
+
     const { data: urlData }: ApolloQueryResult<RouteQuery> = await client.query({
         query: getRoute,
         variables: {
-            url: urlPath
+            url: urlPath,
+            ...categoryVars
         },
         fetchPolicy: 'network-only'
     });
-    const data = await dataPromise;
 
     if (!urlData.route) {
         return {
@@ -44,7 +79,7 @@ export const getStaticProps: GetStaticProps = async context => {
     return {
         props: {
             ...data,
-            route: urlData
+            route: urlData.route
         },
         revalidate: parseInt(process.env.PAGE_REVALIDATE_TIMEOUT || '300', 10)
     };

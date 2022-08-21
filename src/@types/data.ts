@@ -1,4 +1,4 @@
-import { CategoryTreeObject, RecaptchaConfigObject, StoreConfigObject } from '@/types/objects';
+import { CategoryTreeObject, RecaptchaConfigObject, StoreConfigObject } from '@/app/@types/objects';
 
 export interface SharedPageData {
     storeConfig: Partial<StoreConfigObject>;

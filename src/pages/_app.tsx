@@ -2,9 +2,9 @@ import React from 'react';
 
 import type { AppPropsWithLayout } from '@/types';
 
+import '@/app/styles/globals.css';
 import AppProvider from '@/components/AppProvider';
 import DefaultLayout from '@/layouts/default';
-import '@/styles/globals.css';
 
 const App: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
     const getLayout =

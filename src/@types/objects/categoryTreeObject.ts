@@ -1,4 +1,4 @@
-import { CategoryInterface } from '@/types/interfaces';
+import { CategoryInterface } from '@/app/@types/interfaces';
 
 export interface CategoryTreeObject extends CategoryInterface {
     children: Partial<CategoryTreeObject>[];

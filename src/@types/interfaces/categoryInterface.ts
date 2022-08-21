@@ -1,4 +1,4 @@
-import { BreadcrumbObject, CategoryProductsObject, CmsBlockObject } from '@/types/objects';
+import { BreadcrumbObject, CategoryProductsObject, CmsBlockObject } from '@/app/@types/objects';
 
 export interface CategoryInterface {
     breadcrumbs: Partial<BreadcrumbObject>[];
