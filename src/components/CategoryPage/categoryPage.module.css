@@ -1,0 +1,249 @@
+.root {
+    composes: pb-24 from global;
+}
+
+.header {
+    composes: text-center from global;
+    composes: py-16 from global;
+    composes: px-4 from global;
+    composes: sm_px-6 from global;
+    composes: lg_px-8 from global;
+}
+
+.title {
+    composes: text-4xl from global;
+    composes: font-bold from global;
+    composes: tracking-tight from global;
+    composes: text-gray-900 from global;
+}
+
+.description {
+    composes: mt-4 from global;
+    composes: max-w-xl from global;
+    composes: mx-auto from global;
+    composes: text-base from global;
+    composes: text-gray-500 from global;
+}
+
+.toolbar {
+    composes: relative from global;
+    composes: z-10 from global;
+    composes: border-t from global;
+    composes: border-b from global;
+    composes: border-gray-200 from global;
+    composes: grid from global;
+    composes: items-center from global;
+}
+
+.filterRow {
+    composes: relative from global;
+    composes: col-start-1 from global;
+    composes: row-start-1 from global;
+    composes: py-4 from global;
+}
+
+.filterRowInner {
+    composes: max-w-7xl from global;
+    composes: mx-auto from global;
+    composes: flex from global;
+    composes: space-x-6 from global;
+    composes: divide-x from global;
+    composes: divide-gray-200 from global;
+    composes: text-sm from global;
+    composes: px-4 from global;
+    composes: sm_px-6 from global;
+    composes: lg_px-8 from global;
+}
+
+.filterToggle {
+    composes: group from global;
+    composes: text-gray-700 from global;
+    composes: font-medium from global;
+    composes: flex from global;
+    composes: items-center from global;
+}
+
+.filterIcon {
+    composes: flex-none from global;
+    composes: w-5 from global;
+    composes: h-5 from global;
+    composes: mr-2 from global;
+    composes: text-gray-400 from global;
+    composes: group-hover_text-gray-500 from global;
+}
+
+.clearAllWrapper {
+    composes: pl-6 from global;
+}
+
+.clearAll {
+    composes: text-gray-500 from global;
+}
+
+.filterWrapper {
+    composes: border-t from global;
+    composes: border-gray-200 from global;
+    composes: py-10 from global;
+}
+
+.sortRow {
+    composes: col-start-1 from global;
+    composes: row-start-1 from global;
+    composes: py-4 from global;
+}
+
+.sortRowInner {
+    composes: flex from global;
+    composes: justify-end from global;
+    composes: max-w-7xl from global;
+    composes: mx-auto from global;
+    composes: px-4 from global;
+    composes: sm_px-6 from global;
+    composes: lg_px-8 from global;
+}
+
+.sortDropdownWrapper {
+    composes: relative from global;
+    composes: inline-block from global;
+}
+
+.sortAction {
+    composes: flex from global;
+}
+
+.sortButton {
+    composes: group from global;
+    composes: inline-flex from global;
+    composes: justify-center from global;
+    composes: text-sm from global;
+    composes: font-medium from global;
+    composes: text-gray-700 from global;
+    composes: hover_text-gray-900 from global;
+}
+
+.sortIcon {
+    composes: flex-shrink-0 from global;
+    composes: -mr-1 from global;
+    composes: ml-1 from global;
+    composes: h-5 from global;
+    composes: w-5 from global;
+    composes: text-gray-400 from global;
+    composes: group-hover_text-gray-500 from global;
+}
+
+.sortDropdown {
+    composes: origin-top-right from global;
+    composes: absolute from global;
+    composes: right-0 from global;
+    composes: mt-2 from global;
+    composes: rounded-md from global;
+    composes: shadow-2xl from global;
+    composes: bg-white from global;
+    composes: ring-1 from global;
+    composes: ring-black from global;
+    composes: ring-opacity-5 from global;
+    composes: focus_outline-none from global;
+}
+
+.sortOptions {
+    composes: py-1 from global;
+}
+
+.sortOption {
+    composes: block from global;
+    composes: px-4 from global;
+    composes: py-2 from global;
+    composes: text-sm from global;
+    composes: min-w-max from global;
+}
+
+.products {
+    composes: max-w-7xl from global;
+    composes: mx-auto from global;
+    composes: overflow-hidden from global;
+    composes: sm_px-6 from global;
+    composes: lg_px-8 from global;
+}
+
+.grid {
+    composes: -mx-px from global;
+    composes: border-l from global;
+    composes: border-gray-200 from global;
+    composes: grid from global;
+    composes: grid-cols-2 from global;
+    composes: sm_mx-0 from global;
+    composes: md_grid-cols-3 from global;
+    composes: lg_grid-cols-4 from global;
+}
+
+.product {
+    composes: group from global;
+    composes: relative from global;
+    composes: p-4 from global;
+    composes: border-r from global;
+    composes: border-b from global;
+    composes: border-gray-200 from global;
+    composes: sm_p-6 from global;
+}
+
+.imageWrapper {
+    composes: w-full from global;
+    composes: aspect-w-1 from global;
+    composes: aspect-h-1 from global;
+    composes: bg-gray-200 from global;
+    composes: rounded-lg from global;
+    composes: overflow-hidden from global;
+    composes: xl_aspect-w-7 from global;
+    composes: xl_aspect-h-8 from global;
+}
+
+.image {
+    composes: w-full from global;
+    composes: h-full from global;
+    composes: object-center from global;
+    composes: object-cover from global;
+    composes: group-hover_opacity-75 from global;
+}
+
+.productDetails {
+    composes: pt-10 from global;
+    composes: pb-4 from global;
+    composes: text-center from global;
+}
+
+.productName {
+    composes: text-sm from global;
+    composes: font-medium from global;
+    composes: text-gray-900 from global;
+}
+
+.ratingsWrapper {
+    composes: mt-3 from global;
+    composes: flex from global;
+    composes: flex-col from global;
+    composes: items-center from global;
+}
+
+.stars {
+    composes: flex from global;
+    composes: items-center from global;
+}
+
+.star {
+    composes: flex-shrink-0 from global;
+    composes: w-5 from global;
+    composes: h-5 from global;
+}
+
+.ratingSummary {
+    composes: mt-1 from global;
+    composes: text-sm from global;
+    composes: text-gray-500 from global;
+}
+
+.price {
+    composes: mt-4 from global;
+    composes: text-base from global;
+    composes: font-medium from global;
+    composes: text-gray-900 from global;
+}

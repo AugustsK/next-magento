@@ -11,8 +11,19 @@ export const getRoute = gql`
             }
             ... on CategoryTree {
                 name
+                description
+                meta_keywords
                 products(currentPage: $currentPage, pageSize: $pageSize, sort: $productSort) {
+                    page_info {
+                        current_page
+                        page_size
+                        total_pages
+                    }
                     items {
+                        uid
+                        canonical_url
+                        url_key
+                        stock_status
                         image {
                             url
                             label

@@ -2,7 +2,7 @@ import { CategoryInterface, ProductInterface } from '@/app/@types/interfaces';
 import { CmsPageObject } from '@/app/@types/objects/cmsPageObject';
 
 export const ROUTE_TYPE_ENUM = {
-    PRODUCT: 'PRPDUCT',
+    PRODUCT: 'PRODUCT',
     CATEGORY: 'CATEGORY',
     CMS_PAGE: 'CMS_PAGE'
 } as const;

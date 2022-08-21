@@ -13,7 +13,7 @@ export const useMagentoUrl = () => {
     );
 
     const makeProductUrl = useCallback(
-        (item: Partial<ProductInterface>) => `/${item.canonical_url}${storeConfig.product_url_suffix || ''}`,
+        (item: Partial<ProductInterface>) => `/${item.url_key}${storeConfig.product_url_suffix || ''}`,
         [storeConfig]
     );
 
