@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## next-magento
 
 ![example workflow](https://github.com/AugustsK/next-magento/actions/workflows/build.yml/badge.svg)
-[![wakatime](https://wakatime.com/badge/user/b13aa467-4bab-4776-b50a-2a6969049794/project/33be8898-d6da-464e-a851-dedd57c9f1c1.svg)](https://wakatime.com/badge/user/b13aa467-4bab-4776-b50a-2a6969049794/project/33be8898-d6da-464e-a851-dedd57c9f1c1)
+[![wakatime](https://wakatime.com/badge/github/AugustsK/next-magento.svg)](https://wakatime.com/badge/github/AugustsK/next-magento)
 
 Copy `.env.example` to `.env` and set MAGENTO_BACKEND_URL
 
