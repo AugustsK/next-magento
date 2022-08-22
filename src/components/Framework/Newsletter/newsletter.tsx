@@ -3,6 +3,7 @@ import React from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { shallowMerge } from '@/app/utils';
+import Button, { ButtonSize, ButtonVisualType } from '@/components/Atoms/Button';
 import { useUniqueId } from '@/hooks';
 
 import { useNewsletter } from './useNewsletter';
@@ -48,9 +49,16 @@ const Newsletter: React.FC<NewsletterProps> = props => {
                 />
                 {inlineBadge && <GoogleReCaptcha onVerify={onRecaptchaVerify} />}
                 <div className={classes.action}>
-                    <button type="submit" className={classes.button} disabled={loading || isSubmitted}>
+                    <Button
+                        className={classes.button}
+                        type="submit"
+                        visualType={ButtonVisualType.primaryLighter}
+                        disabled={loading || isSubmitted}
+                        rounded={'rounded-md'}
+                        size={ButtonSize.lg}
+                    >
                         Subscribe
-                    </button>
+                    </Button>
                 </div>
             </form>
         </>

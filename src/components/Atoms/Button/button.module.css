@@ -7,6 +7,9 @@
     composes: focus_outline-none from global;
     composes: focus_ring-2 from global;
     composes: focus_ring-offset-2 from global;
+    composes: disabled_cursor-not-allowed from global;
+    composes: hover_disabled_ring-transparent from global from global;
+    composes: focus_disabled_ring-transparent from global from global;
 }
 
 .type_primary {
@@ -15,6 +18,19 @@
     composes: bg-indigo-600 from global;
     composes: hover_bg-indigo-700 from global;
     composes: focus_ring-indigo-500 from global;
+    composes: disabled_bg-slate-500 from global from global;
+    composes: hover_disabled_bg-slate-500 from global from global;
+}
+
+.type_primary-lighter {
+    composes: border-transparent from global;
+    composes: text-white from global;
+    composes: bg-indigo-500 from global;
+    composes: hover_bg-indigo-600 from global;
+    composes: focus_ring-offset-gray-800 from global;
+    composes: focus_ring-indigo-500 from global;
+    composes: disabled_bg-slate-400 from global from global;
+    composes: hover_disabled_bg-slate-400 from global from global;
 }
 
 .type_secondary {
@@ -23,6 +39,9 @@
     composes: bg-indigo-100 from global;
     composes: hover_bg-indigo-200 from global;
     composes: focus_ring-indigo-500 from global;
+    composes: disabled_bg-slate-200 from global from global;
+    composes: disabled_text-slate-400 from global from global;
+    composes: hover_disabled_bg-slate-200 from global from global;
 }
 
 .type_tertiary {
@@ -31,6 +50,9 @@
     composes: bg-white from global;
     composes: hover_bg-gray-50 from global;
     composes: focus_ring-indigo-500 from global;
+    composes: disabled_bg-gray-50 from global from global;
+    composes: disabled_text-gray-400 from global from global;
+    composes: hover_disabled_bg-gray-50 from global from global;
 }
 
 .size_xs {

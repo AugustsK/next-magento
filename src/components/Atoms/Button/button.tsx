@@ -6,6 +6,7 @@ import defaultClasses from './button.module.css';
 
 export const ButtonVisualType = {
     primary: 'primary' as const,
+    primaryLighter: 'primary-lighter' as const,
     secondary: 'secondary' as const,
     tertiary: 'tertiary' as const
 };
@@ -20,10 +21,10 @@ export const ButtonSize = {
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
-    visualType?: 'primary' | 'secondary' | 'tertiary';
+    visualType?: 'primary' | 'primary-lighter' | 'secondary' | 'tertiary';
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     className?: string;
-    rounded?: boolean;
+    rounded?: boolean | string;
     classes?: Partial<{
         root: string;
         type_primary: string;
@@ -49,17 +50,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = props => {
-    const { children, size, visualType, rounded, ...rest } = props;
+    const { children, className, size, visualType, rounded, ...rest } = props;
     const classes = shallowMerge(defaultClasses, props.classes);
+    let roundedClassname = typeof rounded === 'string' ? rounded : !!rounded ? 'rounded-full' : 'rounded';
 
     return (
         <button
             className={classNames(
-                props.className || false,
+                className || false,
                 classes.root,
                 classes[`type_${visualType}`] || false,
                 classes[`size_${size}`] || false,
-                rounded ? 'rounded-full' : 'rounded'
+                roundedClassname
             )}
             {...rest}
         >
