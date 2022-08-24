@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MiniCart: React.FC<any> = () => {
+const MiniCart: React.FC = () => {
     return <div>mini cart</div>;
 };
 

@@ -6,9 +6,12 @@ import { ApolloProvider } from '@apollo/client';
 
 import createClient from '@/app/apollo/client';
 import ReCaptchaContextProvider from '@/context/reCaptchaContext';
+import SessionContextProvider from '@/context/sessionContext';
 import StoreDataContextProvider from '@/context/storeData';
 
 const webClient = createClient();
+
+const contextProviders = [SessionContextProvider, ReCaptchaContextProvider];
 
 type AppProviderProps = {
     children: JSX.Element;
@@ -21,7 +24,12 @@ const AppProvider: React.FC<AppProviderProps> = ({ children, megaMenu, reCaptcha
     return (
         <ApolloProvider client={webClient}>
             <StoreDataContextProvider megaMenu={megaMenu} reCaptchaConfig={reCaptchaConfig} storeConfig={storeConfig}>
-                <ReCaptchaContextProvider>{children}</ReCaptchaContextProvider>
+                {contextProviders.reduceRight(
+                    (memo, ContextProvider) => (
+                        <ContextProvider>{memo}</ContextProvider>
+                    ),
+                    children
+                )}
             </StoreDataContextProvider>
         </ApolloProvider>
     );

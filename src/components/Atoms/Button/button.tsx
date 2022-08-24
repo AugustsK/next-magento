@@ -52,7 +52,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = props => {
     const { children, className, size, visualType, rounded, ...rest } = props;
     const classes = shallowMerge(defaultClasses, props.classes);
-    let roundedClassname = typeof rounded === 'string' ? rounded : !!rounded ? 'rounded-full' : 'rounded';
+    const roundedClassname = typeof rounded === 'string' ? rounded : !!rounded ? 'rounded-full' : 'rounded';
 
     return (
         <button

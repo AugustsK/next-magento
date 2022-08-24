@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { createClientOnlyComponent } from '@/app/utils';
+import withCSR from '@/components/withCSR';
 
 import MiniCart from './miniCart';
 
-const MiniCartWrapper: React.FC<any> = () => {
-    const WrappedMiniCart = createClientOnlyComponent(MiniCart);
+const MiniCartWrapper: React.FC = () => {
+    const MiniCartWithCSR = withCSR(MiniCart);
 
-    return <WrappedMiniCart />;
+    return <MiniCartWithCSR />;
 };
 
 export default MiniCartWrapper;

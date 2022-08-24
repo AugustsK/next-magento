@@ -10,6 +10,7 @@ interface IReCaptchaContext {
 }
 
 const ReCaptchaContext = createContext<IReCaptchaContext>({
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     setShouldLoad() {}
 });
 
