@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { createClientOnlyComponent } from '@/app/utils';
+import withCSR from '@/components/withCSR';
 
 import AccountMenu from './accountMenu';
 
-const AccountMenuWrapper: React.FC<any> = () => {
-    const WrappedAccountMenu = createClientOnlyComponent(AccountMenu);
+const AccountMenuWrapper: React.FC = () => {
+    const AccountMenuWithCSR = withCSR(AccountMenu);
 
-    return <WrappedAccountMenu />;
+    return <AccountMenuWithCSR />;
 };
 
 export default AccountMenuWrapper;

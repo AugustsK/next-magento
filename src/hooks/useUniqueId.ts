@@ -6,7 +6,7 @@ export const useUniqueId = () => {
     const makeId = useCallback((name: string) => `${uniqueId}-${name}`, [uniqueId]);
 
     const id = useCallback(
-        (literals: string | readonly string[], ...args: any[]) => {
+        (literals: string | readonly string[], ...args: string[]) => {
             if (typeof literals === 'string') {
                 literals = [literals];
             }

@@ -55,9 +55,9 @@ export const getStaticProps: GetStaticProps = async context => {
 
     const categoryVars = {
         currentPage: 1,
-        pageSize: data?.storeConfig?.grid_per_page || 12,
+        pageSize: data.storeConfig.grid_per_page || 12,
         sort: {
-            [data?.storeConfig?.default_sort_by || 'position']: 'ASC'
+            [data.storeConfig.catalog_default_sort_by || 'position']: 'ASC'
         }
     };
 

@@ -9,7 +9,7 @@ type ReCaptchaConfigKey = 'reCaptchaConfig';
 
 export default async function reCaptchaConfig(
     client: ApolloClient<NormalizedCacheObject>
-): Promise<[ReCaptchaConfigKey, Partial<RecaptchaConfigObject>]> {
+): Promise<[ReCaptchaConfigKey, RecaptchaConfigObject]> {
     const { data }: ApolloQueryResult<RecaptchaConfigQuery> = await client.query({
         query: getReCaptchaConfig,
         fetchPolicy: 'network-only'

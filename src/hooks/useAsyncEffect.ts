@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-export const useAsyncEffect = (asyncFn: () => Promise<any>) => {
-    const [result, setResult] = useState(null);
+export const useAsyncEffect = <T>(asyncFn: () => Promise<T>) => {
+    const [result, setResult] = useState<T | null>(null);
 
     useEffect(() => {
         async function execute() {

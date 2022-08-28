@@ -1,3 +1,3 @@
-const shallowMerge = (...args: any[]) => Object.assign({}, ...args);
+const shallowMerge = (...args: (object | undefined)[]) => Object.assign({}, ...args);
 
 export default shallowMerge;
