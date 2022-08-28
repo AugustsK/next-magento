@@ -9,7 +9,7 @@ type MegaMenuKey = 'megaMenu';
 
 export default async function megaMenu(
     client: ApolloClient<NormalizedCacheObject>
-): Promise<[MegaMenuKey, Partial<CategoryTreeObject>[]]> {
+): Promise<[MegaMenuKey, CategoryTreeObject[]]> {
     const { data }: ApolloQueryResult<CategoryListQuery> = await client.query({
         query: getMegaMenu,
         fetchPolicy: 'network-only'

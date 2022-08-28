@@ -8,9 +8,9 @@ const client = createClient();
 export { client };
 
 interface IResult {
-    megaMenu: Partial<CategoryTreeObject>[];
-    reCaptchaConfig: Partial<RecaptchaConfigObject>;
-    storeConfig: Partial<StoreConfigObject>;
+    megaMenu: CategoryTreeObject[];
+    reCaptchaConfig: RecaptchaConfigObject;
+    storeConfig: StoreConfigObject;
 }
 
 export default async function getPageData() {
@@ -19,10 +19,10 @@ export default async function getPageData() {
     const result: Partial<IResult> = {};
 
     config.forEach(([key, data]) => {
-        /* eslint-disable-next-line */
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         result[key] = data;
     });
 
-    return result;
+    return result as IResult;
 }

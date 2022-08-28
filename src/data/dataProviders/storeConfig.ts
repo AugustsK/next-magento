@@ -9,7 +9,7 @@ type StoreConfigKey = 'storeConfig';
 
 export default async function storeConfig(
     client: ApolloClient<NormalizedCacheObject>
-): Promise<[StoreConfigKey, Partial<StoreConfigObject>]> {
+): Promise<[StoreConfigKey, StoreConfigObject]> {
     const { data }: ApolloQueryResult<StoreConfigQuery> = await client.query({
         query: getStoreConfig,
         fetchPolicy: 'network-only'
