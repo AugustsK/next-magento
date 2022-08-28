@@ -2,12 +2,12 @@ import React from 'react';
 
 import withCSR from '@/components/withCSR';
 
-import AccountMenu from './accountMenu';
+import AccountMenu, { AccountMenuProps } from './accountMenu';
 
-const AccountMenuWrapper: React.FC = () => {
-    const AccountMenuWithCSR = withCSR(AccountMenu);
+const AccountMenuWrapper: React.FC<AccountMenuProps> = props => {
+    const AccountMenuWithCSR = withCSR<AccountMenuProps>(AccountMenu);
 
-    return <AccountMenuWithCSR />;
+    return <AccountMenuWithCSR {...props} />;
 };
 
 export default AccountMenuWrapper;
