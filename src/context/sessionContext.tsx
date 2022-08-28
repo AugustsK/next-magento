@@ -1,4 +1,9 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+
+import { read, store } from '@/utils/storage';
+
+const C_KEY = 'sct';
+const C_LIFETIME = 24 * 3600;
 
 interface IStoreDataContext {
     isLoggedIn: boolean;
@@ -20,7 +25,8 @@ interface StoreConfigProviderProps {
 
 const SessionContextProvider: React.FC<StoreConfigProviderProps> = props => {
     const { children } = props;
-    const [userToken, setUserToken] = useState<string | null>(null);
+    const storedUserToken = read<string>(C_KEY);
+    const [userToken, setUserToken] = useState<string | null>(storedUserToken);
 
     const logInSession = useCallback((token: string) => setUserToken(token), [setUserToken]);
 
@@ -34,6 +40,10 @@ const SessionContextProvider: React.FC<StoreConfigProviderProps> = props => {
         }),
         [logInSession, logOutSession, userToken]
     );
+
+    useEffect(() => {
+        store(C_KEY, userToken, C_LIFETIME);
+    }, [userToken]);
 
     return <SessionContext.Provider value={contextValue}>{children}</SessionContext.Provider>;
 };
