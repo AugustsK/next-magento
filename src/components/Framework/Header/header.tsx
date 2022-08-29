@@ -6,7 +6,7 @@ import { shallowMerge } from '@/app/utils';
 import MegaMenu from '@/components/Framework/MegaMenu';
 import { useStoreDataContext } from '@/context/storeData';
 
-import AccountMenu from '../AccountMenu';
+import AccountTrigger from '../AccountTrigger';
 import MiniCart from '../MiniCart';
 
 import defaultClasses from './header.module.css';
@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = props => {
                     <div className={classes.topLeft}></div>
                     <p className={classes.topCenter}>{storeConfig?.welcome}</p>
                     <div className={classes.topRight}>
-                        <AccountMenu />
+                        <AccountTrigger />
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@
     composes: inset-x-0 from global;
     composes: text-gray-500 from global;
     composes: sm_text-sm from global;
-    composes: z-1 from global;
+    composes: z-50 from global;
 }
 
 @layer components {

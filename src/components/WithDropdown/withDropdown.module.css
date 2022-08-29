@@ -1,0 +1,23 @@
+.root {
+    composes: relative from global;
+}
+
+.button {
+}
+
+.dropdown {
+    composes: origin-top-right from global;
+    composes: absolute from global;
+    composes: right-0 from global;
+    composes: mt-2 from global;
+    composes: rounded-md from global;
+    composes: shadow-2xl from global;
+    composes: bg-white from global;
+    composes: ring-1 from global;
+    composes: ring-black from global;
+    composes: ring-opacity-5 from global;
+    composes: focus_outline-none from global;
+    composes: min-w-max from global;
+    composes: overflow-hidden from global;
+    composes: z-50 from global;
+}

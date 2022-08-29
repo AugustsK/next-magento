@@ -1,0 +1,7 @@
+.root {
+    composes: bg-white from global;
+    composes: space-y-6 from global;
+    composes: py-8 from global;
+    composes: px-4 from global;
+    composes: sm_px-10 from global;
+}

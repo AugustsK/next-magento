@@ -1,6 +1,5 @@
 .root {
     composes: relative from global;
-    composes: z-1 from global;
 }
 
 .topBar {
