@@ -1,0 +1,6 @@
+.root {
+}
+
+.inputWrapper {
+    composes: mt-1 from global;
+}

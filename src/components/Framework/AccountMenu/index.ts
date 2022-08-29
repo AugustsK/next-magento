@@ -1,1 +1,2 @@
-export { default } from './accountMenu.container';
+export { default } from './accountMenu';
+export type { AccountMenuProps } from './accountMenu';
