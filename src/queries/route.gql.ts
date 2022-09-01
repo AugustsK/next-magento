@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client';
 
+import { ConfigurableProductFragment, SimpleProductFragment } from '@/queries/fragments/product.gql';
+
 export const getRoute = gql`
     query getRoute($url: String!, $currentPage: Int, $pageSize: Int, $productSort: ProductAttributeSortInput) {
         route(url: $url) {
@@ -45,6 +47,14 @@ export const getRoute = gql`
                 meta_description
                 meta_keywords
             }
+            ... on SimpleProduct {
+                ...SimpleProductFragment
+            }
+            ... on ConfigurableProduct {
+                ...ConfigurableProductFragment
+            }
         }
     }
+    ${ConfigurableProductFragment}
+    ${SimpleProductFragment}
 `;
