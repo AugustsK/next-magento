@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { CmsPageObject, RouteObject } from '@/types/objects';
+import { CmsPageObject, CmsRouteObject } from '@/types/objects';
 
 import Head from 'next/head';
 
 import RichContent from '@/components/RichContent';
 
 interface CmsPageProps {
-    cmsPage: Partial<CmsPageObject> | Partial<RouteObject>;
+    cmsPage: CmsPageObject | CmsRouteObject;
 }
 
 const CmsPage: React.FC<CmsPageProps> = ({ cmsPage }) => {

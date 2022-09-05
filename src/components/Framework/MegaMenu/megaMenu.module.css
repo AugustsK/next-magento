@@ -34,6 +34,9 @@
     composes: text-gray-500 from global;
     composes: sm_text-sm from global;
     composes: z-50 from global;
+    composes: -translate-y-px from global;
+    composes: border-t from global;
+    composes: border-gray-200 from global;
 }
 
 @layer components {

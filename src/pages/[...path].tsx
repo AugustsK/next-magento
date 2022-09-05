@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 
 import { SharedPageData } from '@/types';
-import { CategoryTreeObject } from '@/types/objects';
+import { CategoryRouteObject, CategoryTreeObject, CmsRouteObject, ProductRouteObject } from '@/types/objects';
 import { ROUTE_TYPE_ENUM, RouteObject } from '@/types/objects/routeObject';
 import { RouteQuery } from '@/types/queries/routeQuery';
 
@@ -17,7 +17,7 @@ const DynamicCategoryPage = dynamic(() => import('@/components/CategoryPage'));
 const DynamicProductPage = dynamic(() => import('@/components/ProductPage'));
 
 interface MagentoRouteProps extends SharedPageData {
-    route: Partial<RouteObject>;
+    route: RouteObject | CmsRouteObject | CategoryRouteObject | ProductRouteObject;
 }
 
 const MagentoRoute: NextPage<MagentoRouteProps> = ({ route }) => {
@@ -27,19 +27,19 @@ const MagentoRoute: NextPage<MagentoRouteProps> = ({ route }) => {
         case ROUTE_TYPE_ENUM.CMS_PAGE:
             return (
                 <Suspense fallback={'Loading...'}>
-                    <DynamicCmsPage cmsPage={route} />
+                    <DynamicCmsPage cmsPage={route as CmsRouteObject} />
                 </Suspense>
             );
         case ROUTE_TYPE_ENUM.CATEGORY:
             return (
                 <Suspense fallback={'Loading...'}>
-                    <DynamicCategoryPage route={route} />
+                    <DynamicCategoryPage route={route as CategoryRouteObject} />
                 </Suspense>
             );
         case ROUTE_TYPE_ENUM.PRODUCT:
             return (
                 <Suspense fallback={'Loading...'}>
-                    <DynamicProductPage route={route} />
+                    <DynamicProductPage route={route as ProductRouteObject} />
                 </Suspense>
             );
     }

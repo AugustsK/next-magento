@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { RouteObject } from '@/types/objects';
+import { ProductRouteObject } from '@/types/objects';
 
 import { shallowMerge } from '@/utils';
 
 import defaultClasses from './productPage.module.css';
 
 interface ProductPageProps {
-    route: Partial<RouteObject>;
+    route: ProductRouteObject;
     classes?: Partial<{
         root: string;
     }>;

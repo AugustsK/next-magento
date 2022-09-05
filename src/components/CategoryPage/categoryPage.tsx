@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-import { RouteObject } from '@/types/objects';
+import { CategoryRouteObject } from '@/types/objects/categoryRouteObject';
 
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon, FilterIcon, StarIcon } from '@heroicons/react/solid';
@@ -23,7 +23,7 @@ const sortOptions = [
 ];
 
 interface CategoryPageProps {
-    route: Partial<RouteObject>;
+    route: CategoryRouteObject;
     classes?: Partial<{
         root: string;
         header: string;
