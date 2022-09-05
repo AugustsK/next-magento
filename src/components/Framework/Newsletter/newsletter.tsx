@@ -31,35 +31,37 @@ const Newsletter: React.FC<NewsletterProps> = props => {
         <>
             <h3 className={classes.heading}>Subscribe to our newsletter</h3>
             <p className={classes.message}>The latest news, articles, and resources, sent to your inbox weekly.</p>
-            <form className={classes.form} onSubmit={onSubmit}>
-                <label htmlFor={id`email`} className={classes.label}>
-                    Email address
-                </label>
-                <input
-                    type="email"
-                    name="email-address"
-                    id={id`email`}
-                    autoComplete="email"
-                    required
-                    className={classes.input}
-                    placeholder="Enter your email"
-                    disabled={loading}
-                    value={email}
-                    onChange={onChange}
-                />
-                {inlineBadge && <GoogleReCaptcha onVerify={onRecaptchaVerify} />}
-                <div className={classes.action}>
-                    <Button
-                        className={classes.button}
-                        type="submit"
-                        visualType={ButtonVisualType.primaryLighter}
-                        disabled={loading || isSubmitted}
-                        rounded={'rounded-md'}
-                        size={ButtonSize.lg}
-                    >
-                        Subscribe
-                    </Button>
+            <form onSubmit={onSubmit}>
+                <div className={classes.form}>
+                    <label htmlFor={id`email`} className={classes.label}>
+                        Email address
+                    </label>
+                    <input
+                        type="email"
+                        name="email-address"
+                        id={id`email`}
+                        autoComplete="email"
+                        required
+                        className={classes.input}
+                        placeholder="Enter your email"
+                        disabled={loading}
+                        value={email}
+                        onChange={onChange}
+                    />
+                    <div className={classes.action}>
+                        <Button
+                            className={classes.button}
+                            type="submit"
+                            visualType={ButtonVisualType.primaryLighter}
+                            disabled={loading || isSubmitted}
+                            rounded={'rounded-md'}
+                            size={ButtonSize.lg}
+                        >
+                            Subscribe
+                        </Button>
+                    </div>
                 </div>
+                <div className="mt-4">{inlineBadge && <GoogleReCaptcha onVerify={onRecaptchaVerify} />}</div>
             </form>
         </>
     );

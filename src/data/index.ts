@@ -1,7 +1,10 @@
 import { CategoryTreeObject, RecaptchaConfigObject, StoreConfigObject } from '@/types/objects';
 
 import createClient from '@/app/apollo/client';
-import providers from '@/app/data/dataProviders';
+
+import getMegaMenu from './dataProviders/megaMenu';
+import getRecaptchaConfig from './dataProviders/reCaptchaConfig';
+import getStoreConfig from './dataProviders/storeConfig';
 
 const client = createClient();
 
@@ -14,15 +17,16 @@ interface IResult {
 }
 
 export default async function getPageData() {
-    const promises = providers.map(provider => provider(client));
-    const config = await Promise.all(promises);
-    const result: Partial<IResult> = {};
+    const configPromise = getStoreConfig(client);
+    const recaptchaPromise = getRecaptchaConfig(client);
+    const storeConfig = await configPromise;
+    const megaMenu = await getMegaMenu(client, storeConfig.root_category_uid);
 
-    config.forEach(([key, data]) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        result[key] = data;
-    });
+    const result: IResult = {
+        megaMenu,
+        reCaptchaConfig: await recaptchaPromise,
+        storeConfig
+    };
 
-    return result as IResult;
+    return result;
 }

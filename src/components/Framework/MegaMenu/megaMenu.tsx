@@ -21,8 +21,7 @@ interface MegaMenuProps {
 
 const MegaMenu: React.FC<MegaMenuProps> = ({ classes: propClasses }) => {
     const classes = shallowMerge(defaultClasses, propClasses);
-    const { megaMenu, storeConfig } = useStoreDataContext();
-    const rootCategory = megaMenu?.find(category => category.uid === storeConfig?.root_category_uid);
+    const { megaMenu = [] } = useStoreDataContext();
     const { makeCategoryUrl } = useMagentoUrl();
     const [, startTransition] = useTransition();
     const [blockHover, setBlockHover] = useState(false);
@@ -34,13 +33,9 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ classes: propClasses }) => {
         });
     }, [startTransition, setBlockHover]);
 
-    if (!rootCategory || rootCategory?.children?.length === 0) {
-        return null;
-    }
-
     return (
         <nav className={classes.root}>
-            {rootCategory?.children?.map(item => (
+            {megaMenu.map(item => (
                 <div key={item.uid} className={classes.link} onClick={onClick} onMouseLeave={onMouseLeave}>
                     <Link key={item.uid} href={makeCategoryUrl(item)} passHref>
                         <a className={classes.anchor}>{item.name}</a>

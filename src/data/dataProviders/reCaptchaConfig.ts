@@ -5,15 +5,13 @@ import { ApolloClient, ApolloQueryResult, NormalizedCacheObject } from '@apollo/
 
 import { getReCaptchaConfig } from '@/queries';
 
-type ReCaptchaConfigKey = 'reCaptchaConfig';
-
 export default async function reCaptchaConfig(
     client: ApolloClient<NormalizedCacheObject>
-): Promise<[ReCaptchaConfigKey, RecaptchaConfigObject]> {
+): Promise<RecaptchaConfigObject> {
     const { data }: ApolloQueryResult<RecaptchaConfigQuery> = await client.query({
         query: getReCaptchaConfig,
         fetchPolicy: 'network-only'
     });
 
-    return ['reCaptchaConfig' as const, data.recaptchaV3Config];
+    return data.recaptchaV3Config;
 }

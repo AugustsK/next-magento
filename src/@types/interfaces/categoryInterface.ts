@@ -1,9 +1,9 @@
 import { BreadcrumbObject, CategoryProductsObject, CmsBlockObject } from '@/app/@types/objects';
 
 export interface CategoryInterface {
-    breadcrumbs: Partial<BreadcrumbObject>[];
+    breadcrumbs: BreadcrumbObject[];
     canonical_url: string;
-    cms_block: Partial<CmsBlockObject>;
+    cms_block: CmsBlockObject;
     created_at: string;
     default_sort_by: string;
     description: string;
@@ -14,7 +14,7 @@ export interface CategoryInterface {
     path: string;
     position: number;
     product_count: number;
-    products: Partial<CategoryProductsObject>;
+    products: CategoryProductsObject;
     staged: boolean;
     uid: string;
     updated_at: string;

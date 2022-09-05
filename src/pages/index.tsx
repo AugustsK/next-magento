@@ -15,7 +15,7 @@ import { getCmsPage } from '@/queries/cmsPage.gql';
 const DynamicCmsPage = dynamic(() => import('@/components/CmsPage'));
 
 interface HomePageProps extends SharedPageData {
-    cmsPage: Partial<CmsPageObject>;
+    cmsPage: CmsPageObject;
 }
 
 const Home: NextPage<HomePageProps> = ({ cmsPage }) => {

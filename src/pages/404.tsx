@@ -11,7 +11,7 @@ import CmsPage from '@/components/CmsPage';
 import { getCmsPage } from '@/queries/cmsPage.gql';
 
 interface NotFoundProps extends SharedPageData {
-    cmsPage: Partial<CmsPageObject>;
+    cmsPage: CmsPageObject;
 }
 
 const NotFound: NextPage<NotFoundProps> = ({ cmsPage }) => {
