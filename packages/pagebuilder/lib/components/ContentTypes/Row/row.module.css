@@ -1,0 +1,36 @@
+.root {
+    --leftViewportElement: 0;
+    --scrollBarWidth: var(--global-scrollbar-width, 0px);
+}
+
+.contained {
+    composes: root;
+    composes: w-full from global;
+    composes: mx-auto from global;
+    composes: max-w-7xl from global;
+}
+
+.fullBleed {
+    composes: root;
+    composes: -translate-x-2/4 from global;
+    width: calc(100vw - var(--scrollBarWidth));
+    margin-left: 50%;
+}
+
+.videoOverlay {
+    composes: absolute from global;
+    composes: inset-0 from global;
+    z-index: -99;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.root :global [id*='jarallax-container'] video,
+.root :global [id*='jarallax-container'] iframe {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .root {
+        background-attachment: scroll !important;
+    }
+}

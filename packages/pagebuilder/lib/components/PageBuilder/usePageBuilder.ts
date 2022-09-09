@@ -2,13 +2,14 @@ import { useMemo } from 'react';
 import getHtmlDocument from "../../util/getHtmlDocument";
 import convertToInlineStyles from "../../util/convertToInlineStyles";
 import {DOMWindow} from "jsdom";
+import { getContentType } from "../../config";
 
 const bodyId = 'html-body';
 
 let document: Document;
 let window: DOMWindow | typeof globalThis;
 
-interface ContentTypeObject {
+export interface ContentTypeObject {
     contentType: string,
     appearance: string | null,
     children: ContentTypeObject[]
@@ -43,28 +44,14 @@ const walk = (rootEl: Node, contentTypeStructureObj: ContentTypeObject) => {
         }
 
         const props = createContentTypeObject(contentType, currentNode);
-        //const contentTypeConfig = getContentTypeConfig(contentType);
+        const resolvedContentType = getContentType(contentType);
 
-        // if (
-        //     contentTypeConfig &&
-        //     typeof contentTypeConfig.configAggregator === 'function'
-        // ) {
-        //     try {
-        //         Object.assign(
-        //             props,
-        //             contentTypeConfig.configAggregator(currentNode, props)
-        //         );
-        //     } catch (e) {
-        //         console.error(
-        //             `Failed to aggregate config for content type ${contentType}.`,
-        //             e
-        //         );
-        //     }
-        // } else {
-        //     console.warn(
-        //         `Page Builder ${contentType} content type is not supported, this content will not be rendered.`
-        //     );
-        // }
+        if (resolvedContentType) {
+            Object.assign(
+                props,
+                resolvedContentType.configExtractor(currentNode, props)
+            );
+        }
 
         contentTypeStructureObj.children.push(props);
         walk(currentNode, props);
