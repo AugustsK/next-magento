@@ -4,8 +4,8 @@ import type { AppPropsWithLayout } from '@/types';
 
 import '@/app/styles/globals.css';
 import AppProvider from '@/components/AppProvider';
+import { useDetectScrollWidth } from '@/hooks/useDetectScrollWidth';
 import DefaultLayout from '@/layouts/default';
-import { useDetectScrollWidth } from "@/hooks/useDetectScrollWidth";
 
 const App: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
     const getLayout =

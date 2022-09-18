@@ -1,4 +1,4 @@
-import { useEffect, useTransition } from "react";
+import { useEffect, useTransition } from 'react';
 
 const ssr = !globalThis.document;
 
@@ -20,8 +20,7 @@ const getScrollBarWidth = () => {
 
     let widthWithScroll = innerElement.offsetWidth;
 
-    if (widthWithoutScroll === widthWithScroll)
-        widthWithScroll = innerElement.clientWidth;
+    if (widthWithoutScroll === widthWithScroll) widthWithScroll = innerElement.clientWidth;
 
     document.body.removeChild(outerElement);
 
@@ -29,20 +28,14 @@ const getScrollBarWidth = () => {
 };
 
 const createObserver = (scrollBarWidth: number) => {
-    return new globalThis.ResizeObserver((entries) => {
+    return new globalThis.ResizeObserver(entries => {
         for (const entry of entries) {
             const target = entry.target as HTMLElement;
 
             if (target.scrollHeight > globalThis.innerHeight) {
-                target.style.setProperty(
-                    '--global-scrollbar-width',
-                    `${scrollBarWidth}px`
-                );
+                target.style.setProperty('--global-scrollbar-width', `${scrollBarWidth}px`);
             } else {
-                target.style.setProperty(
-                    '--global-scrollbar-width',
-                    '0px'
-                );
+                target.style.setProperty('--global-scrollbar-width', '0px');
             }
         }
     });
@@ -70,6 +63,6 @@ export const useDetectScrollWidth = () => {
                 observer.disconnect();
                 globalThis.document.body.style.removeProperty('--global-scrollbar-width');
             }
-        }
+        };
     }, []);
-}
+};
