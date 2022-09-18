@@ -1,0 +1,9 @@
+{
+  "name": "@next-magento/pagebuilder",
+  "version": "0.1.0",
+  "private": true,
+  "peerDependencies": {
+    "react": "^18",
+    "jsdom": "^20"
+  }
+}

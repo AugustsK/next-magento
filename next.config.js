@@ -1,20 +1,12 @@
+const rewrites = require('./next.js/rewrites');
+const webpack = require('./next.js/webpack');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    async rewrites() {
-        const apiBase = new URL('/graphql', process.env.MAGENTO_BACKEND_URL).toString();
-
-        return {
-            beforeFiles: [
-                // graphql proxy for client-side
-                {
-                    source: '/api/:graphql*',
-                    destination: apiBase + '/:graphql*'
-                }
-            ]
-        };
-    }
+    rewrites,
+    webpack
 };
 
 module.exports = nextConfig;
